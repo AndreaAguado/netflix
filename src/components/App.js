@@ -3,7 +3,9 @@ const App = () => {
   return (
     <div className="page">
       <header>Netflix</header>
-      <main></main>
+      <main>
+        Buscar
+      </main>
       <footer className="footer">
         <nav className="footer_nav">
           <ul className="footer_links_list">
@@ -14,7 +16,6 @@ const App = () => {
         </nav>
         <small className="footer_small">Hecho con <span role="img" aria-label="emoji corazón" title="emoji corazón">&#10084;&#65039;</span> &copy; Andrea Aguado 2021</small>
       </footer>
-      Hola mundo
     </div>
   );
 };
