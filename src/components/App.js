@@ -1,5 +1,6 @@
 import '../styles/App.scss';
 import netflixLogo from '../images/Logo-Netflix.png';
+import Footer from './Footer';
 const App = () => {
 
   return (
@@ -10,7 +11,8 @@ const App = () => {
       <main>
         Buscar
       </main>
-      <footer className="footer">
+      <Footer></Footer>
+      {/* <footer className="footer">
         <nav className="footer_nav">
           <ul className="footer_links_list">
             <li><a className="footer_link" href="https://twitter.com/andrea114am" target="_blank" rel="noreferrer" title="twitter.com/andrea114am"><i className="fab fa-twitter"></i></a></li>
@@ -19,7 +21,7 @@ const App = () => {
           </ul>
         </nav>
         <small className="footer_small">Hecho con <span role="img" aria-label="emoji corazón" title="emoji corazón">&#10084;&#65039;</span> &copy; Andrea Aguado 2021</small>
-      </footer>
+      </footer> */}
     </div>
   );
 };

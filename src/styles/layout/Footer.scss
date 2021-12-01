@@ -1,0 +1,28 @@
+// @import "../core/variables.scss";
+.footer {
+  height: 15%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 10px 0 5px 0;
+  &_links_list {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 3px;
+  }
+  &_link {
+    margin: 0 10px 0 10px;
+    color: white;
+    &:hover {
+      color: red;
+    }
+  }
+  &_small {
+    // font-family: "Amatic SC", cursive;
+    font-family: "Poiret One", cursive;
+    font-family: monospace;
+  }
+}
