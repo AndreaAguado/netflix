@@ -1,0 +1,9 @@
+.header {
+  height: 20%;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  &_logo {
+    height: 100%;
+  }
+}
