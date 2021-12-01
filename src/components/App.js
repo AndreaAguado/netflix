@@ -1,8 +1,12 @@
 import '../styles/App.scss';
+import netflixLogo from '../images/Logo-Netflix.png';
 const App = () => {
+
   return (
     <div className="page">
-      <header>Netflix</header>
+      <header className="header">
+        <img className="header_logo" src={netflixLogo} alt="Logo Netflix" />
+      </header>
       <main>
         Buscar
       </main>
