@@ -16,7 +16,9 @@ const getTrendingMedia = () => {
             return response.results.map((movie => {
                 return {
                     imagePath: movie.poster_path,
-                    title: movie.original_title
+                    titleMovie: movie.original_title,
+                    titleShow: movie.original_name,
+                    mediaType: movie.media_type
                 }
             }))
         })
