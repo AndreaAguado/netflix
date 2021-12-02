@@ -3,16 +3,27 @@
   flex-direction: column;
   align-items: center;
   padding: 15px;
-  .media_list {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    &_item {
-      width: 16%;
-      margin: 20px;
+  .media {
+    &_list {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      &_item {
+        width: 16%;
+        margin: 20px;
+        &_content {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+      }
     }
-    .media_img {
+    &_img {
       width: 100%;
+    }
+    &_title {
+      margin-top: 5px;
+      color: #ffffff;
     }
   }
 }

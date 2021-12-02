@@ -24,7 +24,7 @@ const App = () => {
     return mediaToRender.map((movie, key) => {
       return (
         <li key={key} className="media_list_item">
-          <a href="·" title={movie.titleMovie ? movie.titleMovie : movie.titleShow} target="_blank" rel="noreferrer">
+          <a className="media_list_item_content" href="·" title={movie.titleMovie ? movie.titleMovie : movie.titleShow} target="_blank" rel="noreferrer">
             <img className="media_img" src={imagePath + movie.imagePath} alt={movie.titleMovie ? movie.titleMovie : movie.titleShow} />
             <h3 className="media_title">{movie.titleMovie ? movie.titleMovie : movie.titleShow}</h3>
           </a>
