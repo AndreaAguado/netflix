@@ -3,6 +3,7 @@ import Footer from './Footer';
 import Header from './Header';
 import { useEffect, useState } from 'react';
 import callToApi from '../services/callToApi';
+import Main from './Main';
 const App = () => {
   const [imagePath, setiImagePath] = useState('');
   const [mediaToRender, setMediaToRender] = useState([]);
@@ -35,12 +36,7 @@ const App = () => {
   return (
     <div className="page">
       <Header></Header>
-      <main className="main">
-        Buscar
-        <ul className="media_list">
-          {renderMedia()}
-        </ul>
-      </main>
+      <Main renderMedia={renderMedia}></Main>
       <Footer></Footer>
     </div>
   );
