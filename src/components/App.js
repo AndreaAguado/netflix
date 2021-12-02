@@ -1,11 +1,13 @@
 import '../styles/App.scss';
 import Footer from './Footer';
 import Header from './Header';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import callToApi from '../services/callToApi';
 const App = () => {
+  const [imagePath, setiImagePath] = useState('');
   useEffect(() => {
     callToApi.getConfiguration().then(response => {
+      setiImagePath(response);
       console.log(response);
     });
   }, []);
