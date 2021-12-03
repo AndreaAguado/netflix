@@ -2,9 +2,10 @@
 .footer {
   height: 15vh;
   display: flex;
-  flex-direction: column;
+  // flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
+  // justify-content: space-evenly;
+  justify-content: center;
   padding: 10px 0 5px 0;
   &_links_list {
     display: flex;
@@ -24,5 +25,16 @@
     // font-family: "Amatic SC", cursive;
     font-family: "Poiret One", cursive;
     font-family: monospace;
+  }
+  &_credit_container {
+    height: 60%;
+    margin-left: 20px;
+    .footer_credit_link {
+      height: 100%;
+      display: inline-block;
+      .footer_credit_img {
+        height: 100%;
+      }
+    }
   }
 }
