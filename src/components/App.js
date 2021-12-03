@@ -27,7 +27,7 @@ const App = () => {
     return mediaToRender.map((movie, key) => {
       return (
         <li id={movie.id} key={movie.id} className="media_list_item">
-          <Link className="media_list_item_content" to={`/media/${movie.id}`} title={movie.titleMovie ? movie.titleMovie : movie.titleShow} target="_blank" rel="noreferrer">
+          <Link className="media_list_item_content" to={`/media/${movie.id}`} title={movie.titleMovie ? movie.titleMovie : movie.titleShow} >
             <img className="media_img" src={imagePath + movie.imagePath} alt={movie.titleMovie ? movie.titleMovie : movie.titleShow} />
             <h3 className="media_title">{movie.titleMovie ? movie.titleMovie : movie.titleShow}</h3>
           </Link>
@@ -39,6 +39,9 @@ const App = () => {
   const routeData = useRouteMatch('/media/:id');
   const mediaId = routeData !== null ? routeData.params.id : '';
   const clickedMedia = mediaToRender.find((media) => media.id === parseInt(mediaId));
+  console.log(routeData);
+  console.log(mediaId);
+  console.log(clickedMedia);
 
   return (
     <div className="page">
@@ -50,7 +53,7 @@ const App = () => {
         </Route>
         <Route path="/media/:id">
           <Header></Header>
-          <MediaDetails media={clickedMedia}></MediaDetails>
+          <MediaDetails imagePath={imagePath} media={clickedMedia}></MediaDetails>
           <Footer></Footer>
         </Route>
       </Switch>
