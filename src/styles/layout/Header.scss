@@ -3,6 +3,9 @@
   display: flex;
   align-items: center;
   padding-left: 20px;
+  &_link {
+    height: 100%;
+  }
   &_logo {
     height: 100%;
   }
