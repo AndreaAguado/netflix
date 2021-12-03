@@ -32,7 +32,12 @@ const getMovieGenres = () => {
     return fetch("https://api.themoviedb.org/3/genre/movie/list?api_key=4e51e4a6310fb8de7132d513c50b9a9a&language=en-US")
         .then(response => response.json())
         .then(response => {
-            return response;
+            return response.genres.map((genre) => {
+                return {
+                    id: genre.id,
+                    name: genre.name
+                }
+            })
         })
 }
 
@@ -40,7 +45,12 @@ const getShowGenres = () => {
     return fetch("https://api.themoviedb.org/3/genre/tv/list?api_key=4e51e4a6310fb8de7132d513c50b9a9a&language=en-US")
         .then(response => response.json())
         .then(response => {
-            return response;
+            return response.genres.map((genre) => {
+                return {
+                    id: genre.id,
+                    name: genre.name
+                }
+            })
         })
 }
 const objectToExport = {

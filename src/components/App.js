@@ -10,7 +10,10 @@ import MediaDetails from './MediaDetails';
 const App = () => {
   const [imagePath, setiImagePath] = useState('');
   const [mediaToRender, setMediaToRender] = useState([]);
-  const [genres, setGenres] = useState([]);
+  const [movieGenres, setMovieGenres] = useState([]);
+  const [showGenres, setShowGenres] = useState([]);
+
+
   useEffect(() => {
     callToApi.getConfiguration().then(response => {
       setiImagePath(response);
@@ -25,9 +28,17 @@ const App = () => {
   }, []);
   useEffect(() => {
     callToApi.getMovieGenres().then(response => {
+      setMovieGenres(response);
       console.log(response);
     })
-  })
+  }, []);
+
+  useEffect(() => {
+    callToApi.getShowGenres().then(response => {
+      setShowGenres(response)
+      console.log(response);
+    })
+  }, []);
 
   const renderMedia = () => {
     return mediaToRender.map((movie, key) => {
@@ -45,9 +56,6 @@ const App = () => {
   const routeData = useRouteMatch('/media/:id');
   const mediaId = routeData !== null ? routeData.params.id : '';
   const clickedMedia = mediaToRender.find((media) => media.id === parseInt(mediaId));
-  console.log(routeData);
-  console.log(mediaId);
-  console.log(clickedMedia);
 
   return (
     <div className="page">
