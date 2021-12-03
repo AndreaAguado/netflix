@@ -74,8 +74,10 @@ const App = () => {
         <li id={movie.id} key={movie.id} className="media_list_item">
           <Link className="media_list_item_content" to={`/media/${movie.id}`} title={movie.titleMovie ? movie.titleMovie : movie.titleShow} >
             <img className="media_img" src={imagePath + movie.imagePath} alt={movie.titleMovie ? movie.titleMovie : movie.titleShow} />
-            <h3 className="media_title">{movie.titleMovie ? movie.titleMovie : movie.titleShow}</h3>
-            <p>{genreAsParagraph}</p>
+            <div className="media_info">
+              <h3 className="media_title">{movie.titleMovie ? movie.titleMovie : movie.titleShow}</h3>
+              <p className="media_genres">{genreAsParagraph}</p>
+            </div>
           </Link>
         </li>
       )
