@@ -20,12 +20,6 @@ const App = () => {
     });
   }, []);
   useEffect(() => {
-    callToApi.getTrendingMedia().then(response => {
-      setMediaToRender(response);
-      console.log(response);
-    });
-  }, []);
-  useEffect(() => {
     callToApi.getMovieGenres().then(response => {
       setMovieGenres(response);
       console.log(response);
@@ -38,6 +32,13 @@ const App = () => {
       console.log(response);
     })
   }, []);
+  useEffect(() => {
+    callToApi.getTrendingMedia().then(response => {
+      setMediaToRender(response);
+      console.log(response);
+    });
+  }, []);
+
 
   const whatGenre = (mediaType, genreIdList) => {
     if (mediaType === "movie") {
