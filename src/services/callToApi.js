@@ -18,7 +18,7 @@ const getTrendingMedia = () => {
                     id: movie.id,
                     imagePath: movie.poster_path,
                     titleMovie: movie.original_title,
-                    titleShow: movie.original_name,
+                    titleShow: movie.name,
                     mediaType: movie.media_type,
                     genre: movie.genre_ids,
                     banner: movie.backdrop_path,
