@@ -27,8 +27,26 @@ const getTrendingMedia = () => {
             }))
         })
 }
+
+const getMovieGenres = () => {
+    return fetch("https://api.themoviedb.org/3/genre/movie/list?api_key=4e51e4a6310fb8de7132d513c50b9a9a&language=en-US")
+        .then(response => response.json())
+        .then(response => {
+            return response;
+        })
+}
+
+const getShowGenres = () => {
+    return fetch("https://api.themoviedb.org/3/genre/tv/list?api_key=4e51e4a6310fb8de7132d513c50b9a9a&language=en-US")
+        .then(response => response.json())
+        .then(response => {
+            return response;
+        })
+}
 const objectToExport = {
     getConfiguration: getConfiguration,
     getTrendingMedia: getTrendingMedia,
+    getMovieGenres: getMovieGenres,
+    getShowGenres: getShowGenres
 }
 export default objectToExport;
