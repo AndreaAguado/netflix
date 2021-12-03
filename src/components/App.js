@@ -1,9 +1,11 @@
 import '../styles/App.scss';
 import Footer from './Footer';
 import Header from './Header';
-import { useEffect, useState } from 'react';
-import callToApi from '../services/callToApi';
 import Main from './Main';
+import { useEffect, useState } from 'react';
+import { Switch, Route, useRouteMatch } from 'react-router-dom';
+import callToApi from '../services/callToApi';
+
 const App = () => {
   const [imagePath, setiImagePath] = useState('');
   const [mediaToRender, setMediaToRender] = useState([]);
@@ -33,11 +35,22 @@ const App = () => {
     })
   }
 
+  const routeData = useRouteMatch('/media/:id');
+  const mediaId = routeData !== null ? routeData.params.id : '';
+  const clickedMedia = mediaToRender.find((media) => media.id === parseInt(mediaId));
+
   return (
     <div className="page">
-      <Header></Header>
-      <Main renderMedia={renderMedia}></Main>
-      <Footer></Footer>
+      <Switch>
+        <Route exact path="/">
+          <Header></Header>
+          <Main renderMedia={renderMedia}></Main>
+          <Footer></Footer>
+        </Route>
+        <Route path="/media/:id">
+          Peli
+        </Route>
+      </Switch>
     </div>
   );
 };
