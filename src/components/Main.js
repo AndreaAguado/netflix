@@ -1,20 +1,12 @@
 import '../styles/layout/Main.scss';
+import Filter from './Filter';
 import Loader from './Loader';
 
 const Main = (props) => {
-    const handleChange = (ev) => {
-        props.handleSearch(ev.target.value);
 
-    }
     return (
         <main className="main">
-            <form className="form" onSubmit={(ev) => ev.preventDefault()} action="POST">
-                <input
-                    onKeyUp={handleChange}
-                    className="text_input"
-                    type="text"
-                    placeholder="TV show / movie title" />
-            </form>
+            <Filter handleSearch={props.handleSearch}></Filter>
             <Loader loading={props.loading}></Loader>
             <ul className="media_list">
                 {props.renderMedia()}
