@@ -47,12 +47,12 @@
     &_title {
       margin-top: 5px;
       color: $text_color;
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: $text_font;
     }
     &_genres {
       margin-top: 5px;
       color: $text_color;
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: $text_font;
       font-size: 0.9rem;
     }
     &_info {

@@ -22,7 +22,10 @@
   &_overview {
     font-size: 1.2rem;
     line-height: 1.5rem;
+    margin-top: 10px;
     position: relative;
+    font-family: $text_font;
+    font-weight: 100;
   }
 }
 .return_link_container {
@@ -35,7 +38,7 @@
     width: fit-content;
     color: $links_color;
     &_title {
-      margin: 5px;
+      margin: 10px;
     }
   }
 }
