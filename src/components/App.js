@@ -13,6 +13,7 @@ const App = () => {
   const [movieGenres, setMovieGenres] = useState([]);
   const [showGenres, setShowGenres] = useState([]);
   const [search, setSearch] = useState('');
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     callToApi.getConfiguration().then(response => {
@@ -37,6 +38,7 @@ const App = () => {
     callToApi.getTrendingMedia().then(response => {
       setMediaToRender(response);
       console.log(response);
+      setLoading(false);
     });
   }, []);
 
@@ -108,7 +110,7 @@ const App = () => {
       <Switch>
         <Route exact path="/">
           <Header></Header>
-          <Main renderMedia={renderMedia} handleSearch={handleSearch}></Main>
+          <Main renderMedia={renderMedia} handleSearch={handleSearch} loading={loading}></Main>
           <Footer></Footer>
         </Route>
         <Route path="/media/:id">

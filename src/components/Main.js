@@ -1,4 +1,5 @@
 import '../styles/layout/Main.scss';
+import Loader from './Loader';
 
 const Main = (props) => {
     const handleChange = (ev) => {
@@ -14,6 +15,7 @@ const Main = (props) => {
                     type="text"
                     placeholder="TV show / movie title" />
             </form>
+            <Loader loading={props.loading}></Loader>
             <ul className="media_list">
                 {props.renderMedia()}
             </ul>
