@@ -2,7 +2,6 @@ const getConfiguration = () => {
     return fetch("https://api.themoviedb.org/3/configuration?api_key=4e51e4a6310fb8de7132d513c50b9a9a")
         .then(response => response.json())
         .then(response => {
-            console.log(response);
             const result = response.images.secure_base_url + response.images.backdrop_sizes[3];
             return result;
         })

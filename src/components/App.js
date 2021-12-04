@@ -18,20 +18,17 @@ const App = () => {
   useEffect(() => {
     callToApi.getConfiguration().then(response => {
       setiImagePath(response);
-      console.log(response);
     });
   }, []);
   useEffect(() => {
     callToApi.getMovieGenres().then(response => {
       setMovieGenres(response);
-      console.log(response);
     })
   }, []);
 
   useEffect(() => {
     callToApi.getShowGenres().then(response => {
       setShowGenres(response)
-      console.log(response);
     })
   }, []);
   useEffect(() => {
@@ -81,7 +78,6 @@ const App = () => {
     setSearch(value);
   }
   const renderMedia = () => {
-    console.log(filteredData.length);
     if (filteredData.length < 1) {
       return (
         <li>
