@@ -12,6 +12,7 @@ const App = () => {
   const [mediaToRender, setMediaToRender] = useState([]);
   const [movieGenres, setMovieGenres] = useState([]);
   const [showGenres, setShowGenres] = useState([]);
+  const [search, setSearch] = useState('');
 
   useEffect(() => {
     callToApi.getConfiguration().then(response => {
@@ -64,8 +65,21 @@ const App = () => {
       return trueNames;
     }
   }
+
+  let filteredData = mediaToRender.filter((media) => {
+    if (media.mediaType === 'movie') {
+      return media.titleMovie.toLocaleLowerCase().includes(search.toLocaleLowerCase());
+    }
+    else {
+      return media.titleShow.toLocaleLowerCase().includes(search.toLocaleLowerCase());
+    }
+  })
+
+  const handleSearch = (value) => {
+    setSearch(value);
+  }
   const renderMedia = () => {
-    return mediaToRender.map((movie, key) => {
+    return filteredData.map((movie) => {
       const genreList = whatGenre(movie.mediaType, movie.genre);
       let genreAsParagraph = '';
       for (const genre of genreList) {
@@ -94,7 +108,7 @@ const App = () => {
       <Switch>
         <Route exact path="/">
           <Header></Header>
-          <Main renderMedia={renderMedia}></Main>
+          <Main renderMedia={renderMedia} handleSearch={handleSearch}></Main>
           <Footer></Footer>
         </Route>
         <Route path="/media/:id">
