@@ -1,3 +1,5 @@
+@import "../core/variables.scss";
+
 .media_details {
   &_section {
     min-height: 70vh;
@@ -31,7 +33,7 @@
     display: flex;
     align-items: center;
     width: fit-content;
-    color: white;
+    color: $links_color;
     &_title {
       margin: 5px;
     }

@@ -1,4 +1,5 @@
-// @import "../core/variables.scss";
+@import "../core/variables.scss";
+
 .footer {
   height: 15vh;
   display: flex;
@@ -16,14 +17,12 @@
   }
   &_link {
     margin: 0 10px 0 10px;
-    color: white;
+    color: $links_color;
     &:hover {
-      color: red;
+      color: $accents_color;
     }
   }
   &_small {
-    // font-family: "Amatic SC", cursive;
-    font-family: "Poiret One", cursive;
     font-family: monospace;
   }
   &_credit_container {

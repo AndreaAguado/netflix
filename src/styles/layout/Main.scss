@@ -1,3 +1,5 @@
+@import "../core/variables.scss";
+
 .main {
   display: flex;
   flex-direction: column;
@@ -12,10 +14,10 @@
         width: 16%;
         margin: 10px;
         border-radius: 7px;
-        background-color: #1e1d1d;
-        box-shadow: 0 0 6px 2px white;
+        background-color: $secondary_color;
+        box-shadow: 0 0 6px 2px $shadow_color;
         &:hover {
-          box-shadow: 0 0 6px 6px rgb(255, 0, 0);
+          box-shadow: 0 0 6px 6px $accents_color;
         }
         &_content {
           display: flex;
@@ -33,12 +35,12 @@
     }
     &_title {
       margin-top: 5px;
-      color: #ffffff;
+      color: $text_color;
       font-family: Arial, Helvetica, sans-serif;
     }
     &_genres {
       margin-top: 5px;
-      color: #ffffff;
+      color: $text_color;
       font-family: Arial, Helvetica, sans-serif;
       font-size: 0.9rem;
     }
