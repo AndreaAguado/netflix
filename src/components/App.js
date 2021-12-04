@@ -81,24 +81,35 @@ const App = () => {
     setSearch(value);
   }
   const renderMedia = () => {
-    return filteredData.map((movie) => {
-      const genreList = whatGenre(movie.mediaType, movie.genre);
-      let genreAsParagraph = '';
-      for (const genre of genreList) {
-        genreAsParagraph += `${genre}, `;
-      }
+    console.log(filteredData.length);
+    if (filteredData.length < 1) {
       return (
-        <li id={movie.id} key={movie.id} className="media_list_item">
-          <Link className="media_list_item_content" to={`/media/${movie.id}`} title={movie.titleMovie ? movie.titleMovie : movie.titleShow} >
-            <img className="media_img" src={imagePath + movie.imagePath} alt={movie.titleMovie ? movie.titleMovie : movie.titleShow} />
-            <div className="media_info">
-              <h3 className="media_title">{movie.titleMovie ? movie.titleMovie : movie.titleShow}</h3>
-              <p className="media_genres">{genreAsParagraph}</p>
-            </div>
-          </Link>
+        <li>
+          <p className="warning_message">Nothing matches your search</p>
         </li>
       )
-    })
+    }
+    else {
+      return filteredData.map((movie) => {
+        const genreList = whatGenre(movie.mediaType, movie.genre);
+        let genreAsParagraph = '';
+        for (const genre of genreList) {
+          genreAsParagraph += `${genre}, `;
+        }
+        return (
+          <li id={movie.id} key={movie.id} className="media_list_item">
+            <Link className="media_list_item_content" to={`/media/${movie.id}`} title={movie.titleMovie ? movie.titleMovie : movie.titleShow} >
+              <img className="media_img" src={imagePath + movie.imagePath} alt={movie.titleMovie ? movie.titleMovie : movie.titleShow} />
+              <div className="media_info">
+                <h3 className="media_title">{movie.titleMovie ? movie.titleMovie : movie.titleShow}</h3>
+                <p className="media_genres">{genreAsParagraph}</p>
+              </div>
+            </Link>
+          </li>
+        )
+      })
+    }
+
   }
 
   const routeData = useRouteMatch('/media/:id');

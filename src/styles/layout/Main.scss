@@ -1,6 +1,7 @@
 @import "../core/variables.scss";
 
 .main {
+  min-height: 70vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -60,4 +61,7 @@
       padding: 10px;
     }
   }
+}
+.warning_message {
+  font-size: 2rem;
 }
