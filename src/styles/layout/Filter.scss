@@ -1,0 +1,20 @@
+@import "../core/variables.scss";
+
+.form {
+  .text_input {
+    background-color: $bg_color;
+    border-radius: 8px;
+    border: 1px solid $text_color;
+    padding: 10px;
+    font-size: 1.1rem;
+    color: $text_color;
+    font-family: $text_font;
+    font-weight: 100;
+    &::placeholder {
+      color: $placeholder_color;
+    }
+    &:hover {
+      box-shadow: 0 0 3px 1px white;
+    }
+  }
+}
