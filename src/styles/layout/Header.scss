@@ -2,9 +2,16 @@
   height: 15vh;
   display: flex;
   align-items: center;
-  padding-left: 20px;
+  justify-content: center;
+  @media all and (min-width: 1200px) {
+    height: 15%;
+    padding-top: 20px;
+  }
   &_link {
     height: 100%;
+    @media all and (min-width: 1200px) {
+      height: 150px;
+    }
   }
   &_logo {
     height: 100%;
