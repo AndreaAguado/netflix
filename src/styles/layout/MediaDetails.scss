@@ -27,6 +27,12 @@
     font-family: $text_font;
     font-weight: 100;
   }
+  &_genres {
+    font-size: 1.2rem;
+    font-weight: 100;
+    font-family: $text_font;
+    margin-top: 10px;
+  }
 }
 .return_link_container {
   width: 100%;

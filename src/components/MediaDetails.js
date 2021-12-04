@@ -1,6 +1,15 @@
 import '../styles/layout/MediaDetails.scss';
 import { Link } from 'react-router-dom';
 const MediaDetails = (props) => {
+    const genres = () => {
+        console.log(props.media.mediaType);
+        const genreList = props.whatGenre(props.media.mediaType, props.media.genre);
+        let genreAsParagraph = '';
+        for (const genre of genreList) {
+            genreAsParagraph += `${genre}, `;
+        }
+        return genreAsParagraph;
+    }
     return (
         <section
             className="media_details_section" >
@@ -16,6 +25,7 @@ const MediaDetails = (props) => {
                 <p className="media_details_overview">
                     {props.media.overview}
                 </p>
+                <p className="media_details_genres">Genres: {genres()}</p>
             </div>
         </section >
     )

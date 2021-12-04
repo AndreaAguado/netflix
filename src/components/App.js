@@ -91,18 +91,18 @@ const App = () => {
     }
     else {
       return filteredData.map((movie) => {
-        const genreList = whatGenre(movie.mediaType, movie.genre);
-        let genreAsParagraph = '';
-        for (const genre of genreList) {
-          genreAsParagraph += `${genre}, `;
-        }
+        // const genreList = whatGenre(movie.mediaType, movie.genre);
+        // let genreAsParagraph = '';
+        // for (const genre of genreList) {
+        //   genreAsParagraph += `${genre}, `;
+        // }
         return (
           <li id={movie.id} key={movie.id} className="media_list_item">
             <Link className="media_list_item_content" to={`/media/${movie.id}`} title={movie.titleMovie ? movie.titleMovie : movie.titleShow} >
               <img className="media_img" src={imagePath + movie.imagePath} alt={movie.titleMovie ? movie.titleMovie : movie.titleShow} />
               <div className="media_info">
                 <h3 className="media_title">{movie.titleMovie ? movie.titleMovie : movie.titleShow}</h3>
-                <p className="media_genres">{genreAsParagraph}</p>
+                {/* <p className="media_genres">{genreAsParagraph}</p> */}
               </div>
             </Link>
           </li>
@@ -126,7 +126,7 @@ const App = () => {
         </Route>
         <Route path="/media/:id">
           <Header></Header>
-          <MediaDetails imagePath={imagePath} media={clickedMedia}></MediaDetails>
+          <MediaDetails imagePath={imagePath} media={clickedMedia} whatGenre={whatGenre}></MediaDetails>
           <Footer></Footer>
         </Route>
       </Switch>
