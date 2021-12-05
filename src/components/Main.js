@@ -4,8 +4,8 @@ import Loader from './Loader';
 import NavBar from './NavBar';
 
 const Main = (props) => {
-    const handleGenres = (ev) => {
-        props.handleGenresFilter();
+    const handleMovieGenres = (ev) => {
+        props.handleMovieGenresFilter();
     }
     return (
         <main className="main">

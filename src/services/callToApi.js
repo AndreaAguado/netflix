@@ -63,8 +63,30 @@ const getShowGenres = () => {
         })
 }
 
-const filterByGenre = (genre_id) => {
+const filterMovieByGenre = (genre_id) => {
     return fetch(`https://api.themoviedb.org/3/discover/movie?api_key=4e51e4a6310fb8de7132d513c50b9a9a&sort_by=popularity.desc&page=1&with_genres=${genre_id}&with_watch_monetization_types=flatrate`)
+        .then(response => response.json())
+        .then(response => {
+            console.log(response);
+            return response.results.map((movie => {
+                return {
+                    id: movie.id,
+                    imagePath: movie.poster_path,
+                    titleMovie: movie.title,
+                    originalTitleMovie: movie.original_title,
+                    titleShow: movie.name,
+                    originalTitleShow: movie.original_name,
+                    mediaType: movie.media_type,
+                    genre: movie.genre_ids,
+                    banner: movie.backdrop_path,
+                    overview: movie.overview
+                }
+            }))
+        })
+}
+
+const filterShowByGenre = (genre_id) => {
+    return fetch(`https://api.themoviedb.org/3/discover/tv?api_key=4e51e4a6310fb8de7132d513c50b9a9a&sort_by=popularity.desc&page=1&with_genres=${genre_id}&with_watch_monetization_types=flatrate&with_status=0&with_type=0`)
         .then(response => response.json())
         .then(response => {
             console.log(response);
@@ -92,6 +114,7 @@ const objectToExport = {
     getTrendingMedia: getTrendingMedia,
     getMovieGenres: getMovieGenres,
     getShowGenres: getShowGenres,
-    filterByGenre: filterByGenre
+    filterMovieByGenre: filterMovieByGenre,
+    filterShowByGenre: filterShowByGenre
 }
 export default objectToExport;

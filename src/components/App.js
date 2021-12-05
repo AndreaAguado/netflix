@@ -17,7 +17,8 @@ const App = () => {
   let pageNumCont;
   const [totalPages, setTotalPages] = useState(0);
   const [pageNum, setPageNum] = useState(1);
-  const [selectedGenre, setSelectedGenre] = useState();
+  const [selectedMovieGenre, setSelectedMovieGenre] = useState();
+  const [selectedShowGenre, setSelectedShowGenre] = useState();
 
 
   useEffect(() => {
@@ -52,11 +53,18 @@ const App = () => {
   }, [pageNum]);
 
   useEffect(() => {
-    callToApi.filterByGenre(selectedGenre).then(response => {
+    callToApi.filterMovieByGenre(selectedMovieGenre).then(response => {
       console.log(response);
       setMediaToRender(response);
     });
-  }, [selectedGenre]);
+  }, [selectedMovieGenre]);
+
+  useEffect(() => {
+    callToApi.filterShowByGenre(selectedShowGenre).then(response => {
+      console.log(response);
+      setMediaToRender(response);
+    });
+  }, [selectedShowGenre]);
 
 
   const whatGenre = (genreIdList) => {
@@ -124,8 +132,8 @@ const App = () => {
     setPageNum(value);
   }
 
-  const handleGenresFilter = (value) => {
-    setSelectedGenre(value)
+  const handleMovieGenresFilter = (value) => {
+    setMovieGenres(value)
   }
   const routeData = useRouteMatch('/media/:id');
   const mediaId = routeData !== null ? routeData.params.id : '';
@@ -136,7 +144,7 @@ const App = () => {
       <Switch>
         <Route exact path="/">
           <Header></Header>
-          <Main renderMedia={renderMedia} handleSearch={handleSearch} loading={loading} pageNum={pageNum} totalPages={totalPages} handlePrevPage={handlePrevPage} handleNextPage={handleNextPage} handlePageInput={handlePageInput} handleGenresFilter={handleGenresFilter}></Main>
+          <Main renderMedia={renderMedia} handleSearch={handleSearch} loading={loading} pageNum={pageNum} totalPages={totalPages} handlePrevPage={handlePrevPage} handleNextPage={handleNextPage} handlePageInput={handlePageInput} handleMovieGenresFilter={handleMovieGenresFilter}></Main>
           <Footer></Footer>
         </Route>
         <Route path="/media/:id">
