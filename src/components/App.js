@@ -78,10 +78,10 @@ const App = () => {
 
   let filteredData = mediaToRender.filter((media) => {
     if (media.mediaType === 'movie') {
-      return media.titleMovie.toLocaleLowerCase().includes(search.toLocaleLowerCase());
+      return (media.titleMovie || media.originalTitleMovie).toLocaleLowerCase().includes(search.toLocaleLowerCase()) || (media.originalTitleMovie || media.originalTitleMovie).toLocaleLowerCase().includes(search.toLocaleLowerCase());
     }
     else {
-      return media.titleShow.toLocaleLowerCase().includes(search.toLocaleLowerCase());
+      return media.titleShow.toLocaleLowerCase().includes(search.toLocaleLowerCase()) || media.originalTitleShow.toLocaleLowerCase().includes(search.toLocaleLowerCase());
     }
   })
 
