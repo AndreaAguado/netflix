@@ -14,6 +14,8 @@ const App = () => {
   const [showGenres, setShowGenres] = useState([]);
   const [search, setSearch] = useState('');
   const [loading, setLoading] = useState(true);
+  let currentPage = 1;
+  const [totalPages, setTotalPages] = useState(0);
 
   useEffect(() => {
     callToApi.getConfiguration().then(response => {
@@ -31,13 +33,20 @@ const App = () => {
       setShowGenres(response)
     })
   }, []);
+
   useEffect(() => {
-    callToApi.getTrendingMedia().then(response => {
+    callToApi.getNumberOfPages().then(response => {
+      setTotalPages(response);
+    })
+  }, []);
+
+  useEffect(() => {
+    callToApi.getTrendingMedia(currentPage).then(response => {
       setMediaToRender(response);
       console.log(response);
       setLoading(false);
     });
-  }, []);
+  }, [currentPage]);
 
 
   const whatGenre = (mediaType, genreIdList) => {

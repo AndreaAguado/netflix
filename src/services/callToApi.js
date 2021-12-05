@@ -7,8 +7,16 @@ const getConfiguration = () => {
         })
 }
 
-const getTrendingMedia = () => {
-    return fetch("https://api.themoviedb.org/3/trending/all/week?api_key=4e51e4a6310fb8de7132d513c50b9a9a")
+const getNumberOfPages = () => {
+    return fetch("https://api.themoviedb.org/3/trending/all/day?api_key=4e51e4a6310fb8de7132d513c50b9a9a")
+        .then(response => response.json())
+        .then(response => {
+            return response.total_pages;
+        })
+}
+
+const getTrendingMedia = (page_num) => {
+    return fetch(`https://api.themoviedb.org/3/trending/all/day?api_key=4e51e4a6310fb8de7132d513c50b9a9a&page=${page_num}`)
         .then(response => response.json())
         .then(response => {
             console.log(response);
@@ -54,6 +62,7 @@ const getShowGenres = () => {
 }
 const objectToExport = {
     getConfiguration: getConfiguration,
+    getNumberOfPages: getNumberOfPages,
     getTrendingMedia: getTrendingMedia,
     getMovieGenres: getMovieGenres,
     getShowGenres: getShowGenres
