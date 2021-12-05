@@ -123,6 +123,10 @@ const App = () => {
   const handlePageInput = (value) => {
     setPageNum(value);
   }
+
+  const handleGenresFilter = (value) => {
+    setSelectedGenre(value)
+  }
   const routeData = useRouteMatch('/media/:id');
   const mediaId = routeData !== null ? routeData.params.id : '';
   const clickedMedia = mediaToRender.find((media) => media.id === parseInt(mediaId));
@@ -132,7 +136,7 @@ const App = () => {
       <Switch>
         <Route exact path="/">
           <Header></Header>
-          <Main renderMedia={renderMedia} handleSearch={handleSearch} loading={loading} pageNum={pageNum} totalPages={totalPages} handlePrevPage={handlePrevPage} handleNextPage={handleNextPage} handlePageInput={handlePageInput}></Main>
+          <Main renderMedia={renderMedia} handleSearch={handleSearch} loading={loading} pageNum={pageNum} totalPages={totalPages} handlePrevPage={handlePrevPage} handleNextPage={handleNextPage} handlePageInput={handlePageInput} handleGenresFilter={handleGenresFilter}></Main>
           <Footer></Footer>
         </Route>
         <Route path="/media/:id">
