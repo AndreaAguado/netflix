@@ -2,10 +2,10 @@ import '../styles/layout/MediaDetails.scss';
 import { Link } from 'react-router-dom';
 const MediaDetails = (props) => {
     const genres = () => {
-        const genreList = props.whatGenre(props.media.mediaType, props.media.genre);
-        let genreAsParagraph = '';
+        const genreList = props.whatGenre(props.media.genre);
+        let genreAsParagraph = '· ';
         for (const genre of genreList) {
-            genreAsParagraph += `${genre}, `;
+            genreAsParagraph += `${genre} · `;
         }
         return genreAsParagraph;
     }

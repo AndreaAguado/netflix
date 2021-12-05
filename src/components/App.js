@@ -51,29 +51,45 @@ const App = () => {
   }, [pageNum]);
 
 
-  const whatGenre = (mediaType, genreIdList) => {
-    if (mediaType === "movie") {
-      const genresNames = genreIdList.map((genreId) => {
-        return movieGenres.find((genre) => {
-          return genre.id === genreId;
-        })
+  // const whatGenre = (mediaType, genreIdList) => {
+  //   if (mediaType === "movie") {
+  //     const genresNames = genreIdList.map((genreId) => {
+  //       return movieGenres.find((genre) => {
+  //         return genre.id === genreId;
+  //       })
+  //     })
+  //     const trueNames = genresNames.map((genre) => {
+  //       return genre.name;
+  //     })
+  //     return trueNames;
+  //   }
+  //   else {
+  //     const genresNames = genreIdList.map((genreId) => {
+  //       return showGenres.find((genre) => {
+  //         return genre.id === genreId;
+  //       })
+  //     })
+  //     const trueNames = genresNames.map((genre) => {
+  //       return genre.name;
+  //     })
+  //     return trueNames;
+  //   }
+  // }
+
+
+
+  const whatGenre = (genreIdList) => {
+    const genresNames = genreIdList.map((genreId) => {
+      return movieGenres.find((genre) => {
+        return genre.id === genreId;
+      }) || showGenres.find((genre) => {
+        return genre.id === genreId;
       })
-      const trueNames = genresNames.map((genre) => {
-        return genre.name;
-      })
-      return trueNames;
-    }
-    else {
-      const genresNames = genreIdList.map((genreId) => {
-        return showGenres.find((genre) => {
-          return genre.id === genreId;
-        })
-      })
-      const trueNames = genresNames.map((genre) => {
-        return genre.name;
-      })
-      return trueNames;
-    }
+    })
+    const trueNames = genresNames.map((genre) => {
+      return genre.name;
+    })
+    return trueNames;
   }
 
   let filteredData = mediaToRender.filter((media) => {
