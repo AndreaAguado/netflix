@@ -2,7 +2,6 @@
 @import "../core/variables.scss";
 
 .pages_nav_bar {
-  background-color: $accents_color;
   font-family: $text_font;
   display: flex;
   flex-direction: row;
@@ -10,6 +9,7 @@
   justify-content: space-between;
   margin-top: 25px;
   border-radius: 30px;
+  border: solid $text_color 2px;
   &_index {
     padding: 0 20px 0 20px;
     .input_page_number {
