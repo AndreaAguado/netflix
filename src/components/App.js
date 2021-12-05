@@ -18,7 +18,7 @@ const App = () => {
   const [totalPages, setTotalPages] = useState(0);
   const [pageNum, setPageNum] = useState(1);
   const [selectedMovieGenre, setSelectedMovieGenre] = useState();
-  const [selectedShowGenre, setSelectedShowGenre] = useState();
+  const [selectedShowGenre, setSelectedShowGenre] = useState(16);
 
 
   useEffect(() => {

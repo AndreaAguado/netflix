@@ -64,7 +64,7 @@ const getShowGenres = () => {
 }
 
 const filterMovieByGenre = (genre_id) => {
-    return fetch(`https://api.themoviedb.org/3/discover/movie?api_key=4e51e4a6310fb8de7132d513c50b9a9a&sort_by=popularity.desc&page=1&with_genres=${genre_id}&with_watch_monetization_types=flatrate`)
+    return fetch(`https://api.themoviedb.org/3/discover/movie?api_key=4e51e4a6310fb8de7132d513c50b9a9a&sort_by=popularity.desc&page=1&with_genres=${genre_id}`)
         .then(response => response.json())
         .then(response => {
             console.log(response);
@@ -86,7 +86,7 @@ const filterMovieByGenre = (genre_id) => {
 }
 
 const filterShowByGenre = (genre_id) => {
-    return fetch(`https://api.themoviedb.org/3/discover/tv?api_key=4e51e4a6310fb8de7132d513c50b9a9a&sort_by=popularity.desc&page=1&with_genres=${genre_id}&with_watch_monetization_types=flatrate&with_status=0&with_type=0`)
+    return fetch(`https://api.themoviedb.org/3/discover/tv?api_key=4e51e4a6310fb8de7132d513c50b9a9a&sort_by=popularity.desc&page=1&with_genres=${genre_id}`)
         .then(response => response.json())
         .then(response => {
             console.log(response);
