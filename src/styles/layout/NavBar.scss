@@ -1,0 +1,43 @@
+@import "../core/reset.scss";
+@import "../core/variables.scss";
+
+.pages_nav_bar {
+  background-color: $accents_color;
+  font-family: $text_font;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 25px;
+  border-radius: 30px;
+  &_index {
+    padding: 0 20px 0 20px;
+    .input_page_number {
+      padding-left: 7px;
+      width: fit-content;
+      font-size: inherit;
+      font-family: inherit;
+      background-color: inherit;
+      border-radius: 4px;
+      border: 2px solid $text_color;
+      margin: 0 6px 0 8px;
+      color: $text_color;
+    }
+  }
+  &_button {
+    font-family: inherit;
+    font-size: inherit;
+    padding: 15px;
+    border-radius: 30px;
+    border: none;
+    background-color: inherit;
+    color: $text_color;
+  }
+  &_button:hover {
+    font-weight: bold;
+    box-shadow: 0px 0px 20px 4px $shadow_color;
+  }
+}
+.hidden {
+  display: none;
+}

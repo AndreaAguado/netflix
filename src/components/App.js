@@ -14,8 +14,10 @@ const App = () => {
   const [showGenres, setShowGenres] = useState([]);
   const [search, setSearch] = useState('');
   const [loading, setLoading] = useState(true);
-  let currentPage = 1;
+  let pageNumCont;
   const [totalPages, setTotalPages] = useState(0);
+  const [pageNum, setPageNum] = useState(1);
+
 
   useEffect(() => {
     callToApi.getConfiguration().then(response => {
@@ -41,12 +43,12 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-    callToApi.getTrendingMedia(currentPage).then(response => {
+    callToApi.getTrendingMedia(pageNum).then(response => {
       setMediaToRender(response);
       console.log(response);
       setLoading(false);
     });
-  }, [currentPage]);
+  }, [pageNum]);
 
 
   const whatGenre = (mediaType, genreIdList) => {
@@ -117,6 +119,19 @@ const App = () => {
 
   }
 
+  const handleNextPage = (ev) => {
+    pageNumCont = pageNum + 1;
+    setPageNum(pageNumCont);
+  }
+
+  const handlePrevPage = (ev) => {
+    pageNumCont = pageNum - 1;
+    setPageNum(pageNumCont);
+  }
+
+  const handlePageInput = (value) => {
+    setPageNum(value);
+  }
   const routeData = useRouteMatch('/media/:id');
   const mediaId = routeData !== null ? routeData.params.id : '';
   const clickedMedia = mediaToRender.find((media) => media.id === parseInt(mediaId));
@@ -126,7 +141,7 @@ const App = () => {
       <Switch>
         <Route exact path="/">
           <Header></Header>
-          <Main renderMedia={renderMedia} handleSearch={handleSearch} loading={loading}></Main>
+          <Main renderMedia={renderMedia} handleSearch={handleSearch} loading={loading} pageNum={pageNum} totalPages={totalPages} handlePrevPage={handlePrevPage} handleNextPage={handleNextPage} handlePageInput={handlePageInput}></Main>
           <Footer></Footer>
         </Route>
         <Route path="/media/:id">
