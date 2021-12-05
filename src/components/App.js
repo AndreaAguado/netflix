@@ -17,6 +17,7 @@ const App = () => {
   let pageNumCont;
   const [totalPages, setTotalPages] = useState(0);
   const [pageNum, setPageNum] = useState(1);
+  const [selectedGenre, setSelectedGenre] = useState();
 
 
   useEffect(() => {
@@ -50,6 +51,13 @@ const App = () => {
     });
   }, [pageNum]);
 
+  useEffect(() => {
+    callToApi.filterByGenre(selectedGenre).then(response => {
+      console.log(response);
+      setMediaToRender(response);
+    });
+  }, [selectedGenre]);
+
 
   const whatGenre = (genreIdList) => {
     const genresNames = genreIdList.map((genreId) => {
@@ -66,7 +74,7 @@ const App = () => {
   }
 
   let filteredData = mediaToRender.filter((media) => {
-    if (media.mediaType === 'movie') {
+    if (media.titleMovie || media.originalTitleMovie) {
       return (media.titleMovie || media.originalTitleMovie).toLocaleLowerCase().includes(search.toLocaleLowerCase()) || (media.originalTitleMovie || media.originalTitleMovie).toLocaleLowerCase().includes(search.toLocaleLowerCase());
     }
     else {
