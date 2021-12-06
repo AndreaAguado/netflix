@@ -17,8 +17,8 @@ const App = () => {
   let pageNumCont;
   const [totalPages, setTotalPages] = useState(0);
   const [pageNum, setPageNum] = useState(1);
-  const [selectedMovieGenre, setSelectedMovieGenre] = useState();
-  const [selectedShowGenre, setSelectedShowGenre] = useState();
+  const [selectedMovieGenre, setSelectedMovieGenre] = useState(null);
+  const [selectedShowGenre, setSelectedShowGenre] = useState(null);
 
 
   useEffect(() => {
@@ -53,17 +53,21 @@ const App = () => {
   }, [pageNum]);
 
   useEffect(() => {
-    callToApi.filterMovieByGenre(selectedMovieGenre).then(response => {
-      console.log(response);
-      setMediaToRender(response);
-    });
+    if (selectedMovieGenre) {
+      callToApi.filterMovieByGenre(selectedMovieGenre).then(response => {
+        console.log(response);
+        setMediaToRender(response);
+      });
+    }
   }, [selectedMovieGenre]);
 
   useEffect(() => {
-    callToApi.filterShowByGenre(selectedShowGenre).then(response => {
-      console.log(response);
-      setMediaToRender(response);
-    });
+    if (selectedShowGenre) {
+      callToApi.filterShowByGenre(selectedShowGenre).then(response => {
+        console.log(response);
+        setMediaToRender(response);
+      });
+    }
   }, [selectedShowGenre]);
 
 
