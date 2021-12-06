@@ -1,3 +1,4 @@
+import '../styles/layout/GenresFilters.scss';
 const GenresFilters = (props) => {
     return (
         <>
