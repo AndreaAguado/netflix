@@ -21,7 +21,7 @@ const Main = (props) => {
             </div> */}
             <ul>
                 <li>
-                    <label for="genre_id_1">
+                    <label htmlFor="genre_id_1">
                         <input
                             id="genre_id_1"
                             type="radio"
@@ -32,7 +32,7 @@ const Main = (props) => {
                     </label>
                 </li>
                 <li>
-                    <label for="genre_id_2">
+                    <label htmlFor="genre_id_2">
                         <input
                             id="genre_id_2"
                             type="radio"
@@ -43,7 +43,7 @@ const Main = (props) => {
                     </label>
                 </li>
                 <li>
-                    <label for="genre_id_3">
+                    <label htmlFor="genre_id_3">
                         <input
                             id="genre_id_3"
                             type="radio"
