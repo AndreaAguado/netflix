@@ -15,11 +15,22 @@ const MediaDetails = (props) => {
             return genreAsParagraph;
         }
     }
+    const linkRoute = () => {
+        if (props.selectedMedia === 'movies') {
+            return "/movies";
+        }
+        else if (props.selectedMedia === 'shows') {
+            return "/TVshows";
+        }
+        else {
+            return "/";
+        }
+    }
     return (
         <section
             className="media_details_section" >
             <div className="return_link_container">
-                <Link className="return_link" to="/">
+                <Link className="return_link" to={linkRoute()}>
                     <i className="return_link_icon fas fa-chevron-circle-left"></i>
                     <p className="return_link_title">Return</p>
                 </Link>

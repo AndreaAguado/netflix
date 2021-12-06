@@ -212,7 +212,7 @@ const App = () => {
         </Route>
         <Route path="/media/:id">
           <Header handleAllMediaLink={handleAllMediaLink} handleMoviesLink={handleMoviesLink} handleTVshowsLink={handleTVshowsLink}></Header>
-          <MediaDetails imagePath={imagePath} media={clickedMedia} whatGenre={whatGenre}></MediaDetails>
+          <MediaDetails imagePath={imagePath} media={clickedMedia} whatGenre={whatGenre} selectedMedia={selectedMedia}></MediaDetails>
           <Footer></Footer>
         </Route>
         <Route exact path="/movies">
