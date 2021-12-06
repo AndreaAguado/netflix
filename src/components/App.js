@@ -53,7 +53,7 @@ const App = () => {
   }, [pageNum]);
 
   useEffect(() => {
-    if (selectedMovieGenre) {
+    if (selectedMovieGenre !== null) {
       callToApi.filterMovieByGenre(selectedMovieGenre).then(response => {
         console.log(response);
         setMediaToRender(response);
@@ -62,7 +62,7 @@ const App = () => {
   }, [selectedMovieGenre]);
 
   useEffect(() => {
-    if (selectedShowGenre) {
+    if (selectedShowGenre !== null) {
       callToApi.filterShowByGenre(selectedShowGenre).then(response => {
         console.log(response);
         setMediaToRender(response);
@@ -139,6 +139,17 @@ const App = () => {
   const handleMovieGenresFilter = (value) => {
     setMovieGenres(value)
   }
+
+  const handleMoviesLink = () => {
+    setSelectedMovieGenre('');
+    setSelectedShowGenre(null);
+  }
+  const handleTVshowsLink = () => {
+    setSelectedShowGenre('');
+    setSelectedMovieGenre(null);
+  }
+
+
   const routeData = useRouteMatch('/media/:id');
   const mediaId = routeData !== null ? routeData.params.id : '';
   const clickedMedia = mediaToRender.find((media) => media.id === parseInt(mediaId));
@@ -147,13 +158,23 @@ const App = () => {
     <div className="page">
       <Switch>
         <Route exact path="/">
-          <Header></Header>
+          <Header handleMoviesLink={handleMoviesLink} handleTVshowsLink={handleTVshowsLink}></Header>
           <Main renderMedia={renderMedia} handleSearch={handleSearch} loading={loading} pageNum={pageNum} totalPages={totalPages} handlePrevPage={handlePrevPage} handleNextPage={handleNextPage} handlePageInput={handlePageInput} handleMovieGenresFilter={handleMovieGenresFilter}></Main>
           <Footer></Footer>
         </Route>
         <Route path="/media/:id">
-          <Header></Header>
+          <Header handleMoviesLink={handleMoviesLink} handleTVshowsLink={handleTVshowsLink}></Header>
           <MediaDetails imagePath={imagePath} media={clickedMedia} whatGenre={whatGenre}></MediaDetails>
+          <Footer></Footer>
+        </Route>
+        <Route exact path="/movies">
+          <Header handleMoviesLink={handleMoviesLink} handleTVshowsLink={handleTVshowsLink}></Header>
+          <Main renderMedia={renderMedia} handleSearch={handleSearch} loading={loading} pageNum={pageNum} totalPages={totalPages} handlePrevPage={handlePrevPage} handleNextPage={handleNextPage} handlePageInput={handlePageInput} handleMovieGenresFilter={handleMovieGenresFilter}></Main>
+          <Footer></Footer>
+        </Route>
+        <Route exact path="/TVshows">
+          <Header handleMoviesLink={handleMoviesLink} handleTVshowsLink={handleTVshowsLink}></Header>
+          <Main renderMedia={renderMedia} handleSearch={handleSearch} loading={loading} pageNum={pageNum} totalPages={totalPages} handlePrevPage={handlePrevPage} handleNextPage={handleNextPage} handlePageInput={handlePageInput} handleMovieGenresFilter={handleMovieGenresFilter}></Main>
           <Footer></Footer>
         </Route>
       </Switch>
