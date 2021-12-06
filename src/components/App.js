@@ -140,7 +140,7 @@ const App = () => {
     if (selectedMedia === 'movies') {
       return movieGenres.map((genre) => {
         return (
-          <li className="genres_list_item" id={genre.id} key={genre.id}>
+          <li className="genres_list_item" key={genre.id}>
             <FilterLabel selectedMedia={selectedMedia} genre={genre} handleGenresFilter={handleGenresFilter}></FilterLabel>
           </li>
         )
