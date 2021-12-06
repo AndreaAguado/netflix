@@ -1,7 +1,4 @@
 const GenresFilters = (props) => {
-    const handleMovieGenres = (ev) => {
-        props.handleMovieGenresFilter(ev.target.value);
-    }
     return (
         <>
             <ul className="genres_list">
