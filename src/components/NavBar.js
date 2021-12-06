@@ -2,8 +2,8 @@ import '../styles/layout/NavBar.scss';
 import PropTypes from 'prop-types';
 const NavBar = (props) => {
     const handleChange = (ev) => {
-        if (ev.target.value > props.numberOfPages) {
-            props.handlePageInput(props.numberOfPages);
+        if (ev.target.value > props.totalPages) {
+            props.handlePageInput(props.totalPages);
         }
         else {
             props.handlePageInput(parseInt(ev.target.value));

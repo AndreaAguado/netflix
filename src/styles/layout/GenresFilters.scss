@@ -1,0 +1,14 @@
+@import "../core/variables.scss";
+
+.genres_list {
+  padding: 0 40px 0 40px;
+  display: flex;
+  flex-wrap: wrap;
+  &_item {
+    padding: 6px 8px 6px 6px;
+    border-radius: 8px;
+    &:hover {
+      box-shadow: 0 0 7px 2px $accents_color;
+    }
+  }
+}

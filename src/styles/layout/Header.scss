@@ -1,19 +1,45 @@
+@import "../core/variables.scss";
+
 .header {
   height: 15vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  @media all and (max-width: 768px) {
+    flex-direction: column;
+    height: fit-content;
+    padding-bottom: 20px;
+  }
   @media all and (min-width: 1200px) {
     height: 15%;
     padding-top: 20px;
   }
   &_link {
     height: 100%;
+    @media all and (max-width: 768px) {
+      flex-direction: column;
+      height: 150px;
+    }
     @media all and (min-width: 1200px) {
       height: 150px;
     }
   }
   &_logo {
     height: 100%;
+  }
+  &_nav {
+    width: 50%;
+    @media all and (max-width: 768px) {
+      // padding: ;
+    }
+    &_list {
+      display: flex;
+      justify-content: space-around;
+      font-family: $text_font;
+      font-size: 1.4rem;
+    }
+    &_link {
+      color: $links_color;
+    }
   }
 }
