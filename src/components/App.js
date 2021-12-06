@@ -142,16 +142,6 @@ const App = () => {
         return (
           <li id={genre.id} key={genre.id}>
             <FilterLabel selectedMedia={selectedMedia} genre={genre} handleGenresFilter={handleGenresFilter}></FilterLabel>
-            {/* <label htmlFor={genre.id}>
-              <input
-                onChange={handleMovieGenres}
-                id={genre.id}
-                type="radio"
-                value={genre.id}
-                name="genre_ids"
-              />
-              {genre.name}
-            </label> */}
           </li>
         )
       })
@@ -161,15 +151,6 @@ const App = () => {
         return (
           <li id={genre.id} key={genre.id}>
             <FilterLabel selectedMedia={selectedMedia} genre={genre} handleGenresFilter={handleGenresFilter}></FilterLabel>
-            {/* <label htmlFor={genre.id}>
-              <input
-                id={genre.id}
-                type="radio"
-                value={genre.id}
-                name="genre_ids"
-              />
-              {genre.name}
-            </label> */}
           </li>
         )
       })
