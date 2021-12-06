@@ -106,7 +106,7 @@ const App = () => {
         return (
           <li id={movie.id} key={movie.id} className="media_list_item">
             <Link className="media_list_item_content" to={`/media/${movie.id}`} title={movie.titleMovie ? movie.titleMovie : movie.titleShow} >
-              <img className="media_img" src={imagePath + movie.imagePath} alt={movie.titleMovie ? movie.titleMovie : movie.titleShow} />
+              <img className="media_img" src={movie.imagePath ? imagePath + movie.imagePath : "https://via.placeholder.com/438x657/ff3b3b/000000/?text=TV"} alt={movie.titleMovie ? movie.titleMovie : movie.titleShow} />
               <div className="media_info">
                 <h3 className="media_title">{movie.titleMovie ? movie.titleMovie : movie.titleShow}</h3>
                 {/* <p className="media_genres">{genreAsParagraph}</p> */}
