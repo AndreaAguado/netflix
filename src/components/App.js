@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { Switch, Route, useRouteMatch, Link } from 'react-router-dom';
 import callToApi from '../services/callToApi';
 import MediaDetails from './MediaDetails';
+import GenresFilters from './GenresFilters';
 
 const App = () => {
   const [imagePath, setiImagePath] = useState('');
@@ -19,6 +20,7 @@ const App = () => {
   const [pageNum, setPageNum] = useState(1);
   const [selectedMovieGenre, setSelectedMovieGenre] = useState(null);
   const [selectedShowGenre, setSelectedShowGenre] = useState(null);
+  const [selectedMedia, setSelectedMedia] = useState('');
 
 
   useEffect(() => {
@@ -133,6 +135,43 @@ const App = () => {
 
   }
 
+  const renderGenres = (selectedMedia) => {
+    if (selectedMedia === 'movies') {
+      return movieGenres.map((genre) => {
+        return (
+          <li id={genre.id} key={genre.id}>
+            <label htmlFor={genre.id}>
+              <input
+                id={genre.id}
+                type="radio"
+                value={genre.id}
+                name="genre_ids"
+              />
+              {genre.name}
+            </label>
+          </li>
+        )
+      })
+    }
+    else if (selectedMedia === 'shows') {
+      return showGenres.map((genre) => {
+        return (
+          <li id={genre.id} key={genre.id}>
+            <label htmlFor={genre.id}>
+              <input
+                id={genre.id}
+                type="radio"
+                value={genre.name}
+                name="genre_ids"
+              />
+              {genre.name}
+            </label>
+          </li>
+        )
+      })
+    }
+  }
+
   const handleNextPage = (ev) => {
     pageNumCont = pageNum + 1;
     setPageNum(pageNumCont);
@@ -155,14 +194,17 @@ const App = () => {
     setPageNum(0);
     setSelectedShowGenre(null);
     setSelectedMovieGenre(null);
+    setSelectedMedia('');
   }
   const handleMoviesLink = () => {
     setSelectedMovieGenre('');
     setSelectedShowGenre(null);
+    setSelectedMedia('movies');
   }
   const handleTVshowsLink = () => {
     setSelectedShowGenre('');
     setSelectedMovieGenre(null);
+    setSelectedMedia('shows');
   }
 
 
@@ -185,11 +227,13 @@ const App = () => {
         </Route>
         <Route exact path="/movies">
           <Header handleAllMediaLink={handleAllMediaLink} handleMoviesLink={handleMoviesLink} handleTVshowsLink={handleTVshowsLink}></Header>
+          <GenresFilters renderGenres={renderGenres} selectedMedia={selectedMedia}></GenresFilters>
           <Main renderMedia={renderMedia} handleSearch={handleSearch} loading={loading} pageNum={pageNum} totalPages={totalPages} handlePrevPage={handlePrevPage} handleNextPage={handleNextPage} handlePageInput={handlePageInput} handleMovieGenresFilter={handleMovieGenresFilter}></Main>
           <Footer></Footer>
         </Route>
         <Route exact path="/TVshows">
           <Header handleAllMediaLink={handleAllMediaLink} handleMoviesLink={handleMoviesLink} handleTVshowsLink={handleTVshowsLink}></Header>
+          <GenresFilters renderGenres={renderGenres} selectedMedia={selectedMedia}></GenresFilters>
           <Main renderMedia={renderMedia} handleSearch={handleSearch} loading={loading} pageNum={pageNum} totalPages={totalPages} handlePrevPage={handlePrevPage} handleNextPage={handleNextPage} handlePageInput={handlePageInput} handleMovieGenresFilter={handleMovieGenresFilter}></Main>
           <Footer></Footer>
         </Route>
