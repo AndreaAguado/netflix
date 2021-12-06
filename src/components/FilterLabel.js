@@ -1,3 +1,5 @@
+import '../styles/layout/FilterLabel.scss';
+
 const FilterLabel = (props) => {
     const handleMovieGenres = (ev) => {
         console.log(ev.target.value);
@@ -5,7 +7,7 @@ const FilterLabel = (props) => {
     }
     return (
         <>
-            <label htmlFor={props.genre.id}>
+            <label className="filter_label" htmlFor={props.genre.id}>
                 <input
                     onChange={handleMovieGenres}
                     id={props.genre.id}
