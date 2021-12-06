@@ -7,6 +7,7 @@ import { Switch, Route, useRouteMatch, Link } from 'react-router-dom';
 import callToApi from '../services/callToApi';
 import MediaDetails from './MediaDetails';
 import GenresFilters from './GenresFilters';
+import FilterLabel from './FilterLabel';
 
 const App = () => {
   const [imagePath, setiImagePath] = useState('');
@@ -140,15 +141,17 @@ const App = () => {
       return movieGenres.map((genre) => {
         return (
           <li id={genre.id} key={genre.id}>
-            <label htmlFor={genre.id}>
+            <FilterLabel selectedMedia={selectedMedia} genre={genre} handleGenresFilter={handleGenresFilter}></FilterLabel>
+            {/* <label htmlFor={genre.id}>
               <input
+                onChange={handleMovieGenres}
                 id={genre.id}
                 type="radio"
                 value={genre.id}
                 name="genre_ids"
               />
               {genre.name}
-            </label>
+            </label> */}
           </li>
         )
       })
@@ -157,15 +160,16 @@ const App = () => {
       return showGenres.map((genre) => {
         return (
           <li id={genre.id} key={genre.id}>
-            <label htmlFor={genre.id}>
+            <FilterLabel selectedMedia={selectedMedia} genre={genre} handleGenresFilter={handleGenresFilter}></FilterLabel>
+            {/* <label htmlFor={genre.id}>
               <input
                 id={genre.id}
                 type="radio"
-                value={genre.name}
+                value={genre.id}
                 name="genre_ids"
               />
               {genre.name}
-            </label>
+            </label> */}
           </li>
         )
       })
@@ -186,8 +190,13 @@ const App = () => {
     setPageNum(value);
   }
 
-  const handleMovieGenresFilter = (value) => {
-    setMovieGenres(value)
+  const handleGenresFilter = (value, selectedMedia) => {
+    if (selectedMedia === 'movies') {
+      setSelectedMovieGenre(value)
+    }
+    else if (selectedMedia === 'shows') {
+      setSelectedShowGenre(value);
+    }
   }
 
   const handleAllMediaLink = () => {
@@ -217,7 +226,7 @@ const App = () => {
       <Switch>
         <Route exact path="/">
           <Header handleAllMediaLink={handleAllMediaLink} handleMoviesLink={handleMoviesLink} handleTVshowsLink={handleTVshowsLink}></Header>
-          <Main renderMedia={renderMedia} handleSearch={handleSearch} loading={loading} pageNum={pageNum} totalPages={totalPages} handlePrevPage={handlePrevPage} handleNextPage={handleNextPage} handlePageInput={handlePageInput} handleMovieGenresFilter={handleMovieGenresFilter}></Main>
+          <Main renderMedia={renderMedia} handleSearch={handleSearch} loading={loading} pageNum={pageNum} totalPages={totalPages} handlePrevPage={handlePrevPage} handleNextPage={handleNextPage} handlePageInput={handlePageInput} handleGenresFilter={handleGenresFilter}></Main>
           <Footer></Footer>
         </Route>
         <Route path="/media/:id">
@@ -228,13 +237,13 @@ const App = () => {
         <Route exact path="/movies">
           <Header handleAllMediaLink={handleAllMediaLink} handleMoviesLink={handleMoviesLink} handleTVshowsLink={handleTVshowsLink}></Header>
           <GenresFilters renderGenres={renderGenres} selectedMedia={selectedMedia}></GenresFilters>
-          <Main renderMedia={renderMedia} handleSearch={handleSearch} loading={loading} pageNum={pageNum} totalPages={totalPages} handlePrevPage={handlePrevPage} handleNextPage={handleNextPage} handlePageInput={handlePageInput} handleMovieGenresFilter={handleMovieGenresFilter}></Main>
+          <Main renderMedia={renderMedia} handleSearch={handleSearch} loading={loading} pageNum={pageNum} totalPages={totalPages} handlePrevPage={handlePrevPage} handleNextPage={handleNextPage} handlePageInput={handlePageInput} handleGenresFilter={handleGenresFilter}></Main>
           <Footer></Footer>
         </Route>
         <Route exact path="/TVshows">
           <Header handleAllMediaLink={handleAllMediaLink} handleMoviesLink={handleMoviesLink} handleTVshowsLink={handleTVshowsLink}></Header>
           <GenresFilters renderGenres={renderGenres} selectedMedia={selectedMedia}></GenresFilters>
-          <Main renderMedia={renderMedia} handleSearch={handleSearch} loading={loading} pageNum={pageNum} totalPages={totalPages} handlePrevPage={handlePrevPage} handleNextPage={handleNextPage} handlePageInput={handlePageInput} handleMovieGenresFilter={handleMovieGenresFilter}></Main>
+          <Main renderMedia={renderMedia} handleSearch={handleSearch} loading={loading} pageNum={pageNum} totalPages={totalPages} handlePrevPage={handlePrevPage} handleNextPage={handleNextPage} handlePageInput={handlePageInput} handleGenresFilter={handleGenresFilter}></Main>
           <Footer></Footer>
         </Route>
       </Switch>
