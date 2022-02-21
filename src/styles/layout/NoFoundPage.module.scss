@@ -1,0 +1,29 @@
+.main {
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/9/9e/SiwaSandDunes.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: inset 0px 0px 20px 20px black;
+  @media all and (min-width: 1200px) {
+    height: 60vh;
+  }
+}
+.title {
+  font-size: 5rem;
+  text-align: center;
+  filter: drop-shadow(1px 1px 4px black);
+}
+.link {
+  font-size: 3rem;
+  color: inherit;
+  filter: drop-shadow(1px 1px 4px black);
+  &:hover {
+    text-decoration: underline;
+    filter: drop-shadow(1px 1px 4px rgb(255, 255, 255));
+  }
+}

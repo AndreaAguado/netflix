@@ -8,6 +8,7 @@ import callToApi from '../services/callToApi';
 import MediaDetails from './MediaDetails';
 import GenresFilters from './GenresFilters';
 import FilterLabel from './FilterLabel';
+import NoFoundPage from './NoFoundPage';
 
 const App = () => {
   const [imagePath, setiImagePath] = useState('');
@@ -219,6 +220,9 @@ const App = () => {
         <Route exact path="/TVshows">
           <GenresFilters renderGenres={renderGenres} selectedMedia={selectedMedia}></GenresFilters>
           <Main renderMedia={renderMedia} handleSearch={handleSearch} loading={loading} pageNum={pageNum} totalPages={totalPages} handlePrevPage={handlePrevPage} handleNextPage={handleNextPage} handlePageInput={handlePageInput} handleGenresFilter={handleGenresFilter}></Main>
+        </Route>
+        <Route path="*">
+          <NoFoundPage />
         </Route>
       </Switch>
       <Footer></Footer>
