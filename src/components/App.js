@@ -204,30 +204,24 @@ const App = () => {
 
   return (
     <div className="page">
+      <Header handleAllMediaLink={handleAllMediaLink} handleMoviesLink={handleMoviesLink} handleTVshowsLink={handleTVshowsLink}></Header>
       <Switch>
         <Route exact path="/">
-          <Header handleAllMediaLink={handleAllMediaLink} handleMoviesLink={handleMoviesLink} handleTVshowsLink={handleTVshowsLink}></Header>
           <Main renderMedia={renderMedia} handleSearch={handleSearch} loading={loading} pageNum={pageNum} totalPages={totalPages} handlePrevPage={handlePrevPage} handleNextPage={handleNextPage} handlePageInput={handlePageInput} handleGenresFilter={handleGenresFilter}></Main>
-          <Footer></Footer>
         </Route>
         <Route path="/media/:id">
-          <Header handleAllMediaLink={handleAllMediaLink} handleMoviesLink={handleMoviesLink} handleTVshowsLink={handleTVshowsLink}></Header>
           <MediaDetails imagePath={imagePath} media={clickedMedia} whatGenre={whatGenre} selectedMedia={selectedMedia}></MediaDetails>
-          <Footer></Footer>
         </Route>
         <Route exact path="/movies">
-          <Header handleAllMediaLink={handleAllMediaLink} handleMoviesLink={handleMoviesLink} handleTVshowsLink={handleTVshowsLink}></Header>
           <GenresFilters renderGenres={renderGenres} selectedMedia={selectedMedia}></GenresFilters>
           <Main renderMedia={renderMedia} handleSearch={handleSearch} loading={loading} pageNum={pageNum} totalPages={totalPages} handlePrevPage={handlePrevPage} handleNextPage={handleNextPage} handlePageInput={handlePageInput} handleGenresFilter={handleGenresFilter}></Main>
-          <Footer></Footer>
         </Route>
         <Route exact path="/TVshows">
-          <Header handleAllMediaLink={handleAllMediaLink} handleMoviesLink={handleMoviesLink} handleTVshowsLink={handleTVshowsLink}></Header>
           <GenresFilters renderGenres={renderGenres} selectedMedia={selectedMedia}></GenresFilters>
           <Main renderMedia={renderMedia} handleSearch={handleSearch} loading={loading} pageNum={pageNum} totalPages={totalPages} handlePrevPage={handlePrevPage} handleNextPage={handleNextPage} handlePageInput={handlePageInput} handleGenresFilter={handleGenresFilter}></Main>
-          <Footer></Footer>
         </Route>
       </Switch>
+      <Footer></Footer>
     </div>
   );
 };
