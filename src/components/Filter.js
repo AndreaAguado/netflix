@@ -2,8 +2,9 @@ import '../styles/layout/Filter.scss';
 
 const Filter = (props) => {
     const handleChange = (ev) => {
-        props.handleSearch(ev.target.value);
-
+        let myQuery = ev.target.value;
+        myQuery = myQuery.replace(/ /g, "+");
+        props.handleSearch(myQuery);
     }
     return (
         <form className="form" onSubmit={(ev) => ev.preventDefault()} action="POST">

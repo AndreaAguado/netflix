@@ -100,14 +100,16 @@ const App = () => {
     return trueNames;
   }
 
-  let filteredData = mediaToRender.filter((media) => {
-    if (media.titleMovie || media.originalTitleMovie) {
-      return (media.titleMovie || media.originalTitleMovie).toLocaleLowerCase().includes(search.toLocaleLowerCase()) || (media.originalTitleMovie || media.originalTitleMovie).toLocaleLowerCase().includes(search.toLocaleLowerCase());
-    }
-    else {
-      return media.titleShow.toLocaleLowerCase().includes(search.toLocaleLowerCase()) || media.originalTitleShow.toLocaleLowerCase().includes(search.toLocaleLowerCase());
-    }
-  })
+  // let filteredData = mediaToRender.filter((media) => {
+  //   if (media.titleMovie || media.originalTitleMovie) {
+  //     return (media.titleMovie || media.originalTitleMovie).toLocaleLowerCase().includes(search.toLocaleLowerCase()) || (media.originalTitleMovie || media.originalTitleMovie).toLocaleLowerCase().includes(search.toLocaleLowerCase());
+  //   }
+  //   else {
+  //     return media.titleShow.toLocaleLowerCase().includes(search.toLocaleLowerCase()) || media.originalTitleShow.toLocaleLowerCase().includes(search.toLocaleLowerCase());
+  //   }
+  // })
+
+  let filteredData = mediaToRender;
 
   const handleSearch = (value) => {
     setSearch(value);
