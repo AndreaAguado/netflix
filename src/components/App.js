@@ -149,19 +149,19 @@ const App = () => {
 
   const renderGenres = (selectedMedia) => {
     if (selectedMedia === 'movies') {
-      return movieGenres.map((genre) => {
+      return movieGenres.map((genre, index) => {
         return (
-          <li className="genres_list_item" key={genre.id}>
-            <FilterLabel selectedMedia={selectedMedia} genre={genre} handleGenresFilter={handleGenresFilter}></FilterLabel>
+          <li className="genres_list_item" key={index}>
+            <FilterLabel selectedMedia={selectedMedia} genre={genre} handleGenresFilter={handleGenresFilter} />
           </li>
         )
       })
     }
     else if (selectedMedia === 'shows') {
-      return showGenres.map((genre) => {
+      return showGenres.map((genre, index) => {
         return (
-          <li className="genres_list_item" id={genre.id} key={genre.id}>
-            <FilterLabel selectedMedia={selectedMedia} genre={genre} handleGenresFilter={handleGenresFilter}></FilterLabel>
+          <li className="genres_list_item" id={index} key={genre.id}>
+            <FilterLabel selectedMedia={selectedMedia} genre={genre} handleGenresFilter={handleGenresFilter} />
           </li>
         )
       })
