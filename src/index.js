@@ -7,7 +7,7 @@ import App from './components/App';
 ReactDOM.render(
     <HashRouter>
         <App />
-    </HashRouter> ,   
+    </HashRouter>,
     //   <BrowserRouter>
     //   <App />
     // </BrowserRouter>,
