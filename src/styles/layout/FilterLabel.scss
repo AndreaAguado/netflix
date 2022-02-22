@@ -2,4 +2,9 @@
 
 .filter_label {
   font-family: $text_font;
+  cursor: pointer;
+  display: block;
+}
+input {
+  cursor: pointer;
 }
