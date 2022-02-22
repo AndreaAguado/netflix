@@ -40,7 +40,16 @@
     font-weight: 100;
     font-family: $text_font;
     margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
   }
+}
+.genre_tag {
+  background-color: $accents_color;
+  padding: 5px 7px;
+  border-radius: 5px;
 }
 .return_link_container {
   width: 100%;

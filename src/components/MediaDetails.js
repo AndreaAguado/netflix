@@ -5,11 +5,11 @@ const MediaDetails = (props) => {
         console.log(props.media);
         if (props.media.genre) {
             const genreList = props.whatGenre(props.media.genre);
-            let genreAsParagraph = '· ';
-            for (const genre of genreList) {
-                genreAsParagraph += `${genre} · `;
-            }
-            return genreAsParagraph;
+            return genreList.map((genre) => {
+                return (
+                    <li className='genre_tag' id={genre} key={genre}>{genre}</li>
+                )
+            })
         }
         else {
             let genreAsParagraph = '';
@@ -43,7 +43,7 @@ const MediaDetails = (props) => {
                     <p className="media_details_overview">
                         {props.media.overview}
                     </p>
-                    <p className="media_details_genres">Genres: {genres()}</p>
+                    <ul className="media_details_genres">Genres: {genres()}</ul>
                 </div>
             </section >
             : null
