@@ -107,6 +107,28 @@ const filterShowByGenre = (genre_id) => {
         })
 }
 
+const getFilteredData = (search) => {
+    return fetch(`https://api.themoviedb.org/3/search/movie?api_key=4e51e4a6310fb8de7132d513c50b9a9a&query=${search}`)
+        .then(response => response.json())
+        .then(response => {
+            console.log(response);
+            return response.results.map((movie => {
+                return {
+                    id: movie.id,
+                    imagePath: movie.poster_path,
+                    titleMovie: movie.title,
+                    originalTitleMovie: movie.original_title,
+                    titleShow: movie.name,
+                    originalTitleShow: movie.original_name,
+                    mediaType: movie.media_type,
+                    genre: movie.genre_ids,
+                    banner: movie.backdrop_path,
+                    overview: movie.overview
+                }
+            }))
+        })
+}
+
 
 const objectToExport = {
     getConfiguration: getConfiguration,
@@ -115,6 +137,7 @@ const objectToExport = {
     getMovieGenres: getMovieGenres,
     getShowGenres: getShowGenres,
     filterMovieByGenre: filterMovieByGenre,
-    filterShowByGenre: filterShowByGenre
+    filterShowByGenre: filterShowByGenre,
+    getFilteredData: getFilteredData,
 }
 export default objectToExport;

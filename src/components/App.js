@@ -85,6 +85,23 @@ const App = () => {
     }
   }, [selectedShowGenre]);
 
+  useEffect(() => {
+    if (search.length > 1) {
+      callToApi.getFilteredData(search).then(response => {
+        setMediaToRender(response);
+        setLoading(false);
+      })
+    }
+    else {
+      callToApi.getTrendingMedia(1).then(response => {
+        setMediaToRender(response);
+        console.log(response);
+        setLoading(false);
+      });
+    }
+
+  }, [search]);
+
 
   const whatGenre = (genreIdList) => {
     const genresNames = genreIdList.map((genreId) => {
@@ -100,22 +117,13 @@ const App = () => {
     return trueNames;
   }
 
-  // let filteredData = mediaToRender.filter((media) => {
-  //   if (media.titleMovie || media.originalTitleMovie) {
-  //     return (media.titleMovie || media.originalTitleMovie).toLocaleLowerCase().includes(search.toLocaleLowerCase()) || (media.originalTitleMovie || media.originalTitleMovie).toLocaleLowerCase().includes(search.toLocaleLowerCase());
-  //   }
-  //   else {
-  //     return media.titleShow.toLocaleLowerCase().includes(search.toLocaleLowerCase()) || media.originalTitleShow.toLocaleLowerCase().includes(search.toLocaleLowerCase());
-  //   }
-  // })
-
-  let filteredData = mediaToRender;
-
   const handleSearch = (value) => {
     setSearch(value);
   }
+
+
   const renderMedia = () => {
-    if (filteredData.length < 1) {
+    if (search.length < 1 && mediaToRender.length < 1) {
       return (
         <li>
           <p className="warning_message">Nothing matches your search</p>
@@ -123,7 +131,7 @@ const App = () => {
       )
     }
     else {
-      return filteredData.map((movie) => {
+      return mediaToRender.map((movie) => {
         return (
           <li id={movie.id} key={movie.id} className="media_list_item">
             <Link className="media_list_item_content" to={`/media/${movie.id}`} title={movie.titleMovie ? movie.titleMovie : movie.titleShow} >
